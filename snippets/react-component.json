@@ -1,0 +1,34 @@
+{
+    "React Functional Component": {
+        "prefix": "component",
+        "body": [
+            "import React from 'react';",
+            "",
+            "const ${1:MyComponent}: React.FC = () => {",
+            "    return (",
+            "        <>",
+            "            ${2:your code here}",
+            "        </>",
+            "    );",
+            "};",
+            "",
+            "export default ${1:MyComponent};"
+        ],
+        "description": "Create a React functional component"
+    },
+    "try-catch": {
+        "prefix": "try",
+        "body": [
+            "try {",
+            "    const response = await axios.post('/api/sql', {",
+            "      action: '${1:action}',",
+            "    });",
+            "    console.log(response.data);",
+            "   }",
+            "} catch (error) {",
+            "   console.error('${2:ComponentName} -> Fehler: ', error);",
+            "}"
+        ],
+        "description": "writs a try-catch block"
+    }
+}

@@ -1,0 +1,44 @@
+{
+  "name": "react-component-snippet",
+  "displayName": "React Component Snippet",
+  "description": "Insert React component template",
+  "version": "0.0.1",
+  "engines": {
+      "vscode": "^1.50.0"
+  },
+  "categories": [
+      "Snippets"
+  ],
+  "activationEvents": [
+      "onLanguage:typescriptreact",
+      "onLanguage:javascriptreact"
+  ],
+  "main": "./out/extension.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/react-component-snippet.git"
+  },
+  "contributes": {
+      "snippets": [
+          {
+              "language": "typescriptreact",
+              "path": "./snippets/react-component.json"
+          },
+          {
+              "language": "javascriptreact",
+              "path": "./snippets/react-component.json"
+          }
+      ]
+  },
+  "scripts": {
+      "vscode:prepublish": "npm run compile",
+      "compile": "tsc -p ./",
+      "watch": "tsc -watch -p ./",
+      "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+      "typescript": "^4.0.3",
+      "@types/node": "^14.14.6",
+      "@types/vscode": "^1.50.0"
+  }
+}
