@@ -97,19 +97,11 @@ function activate(context) {
                 // Define the component file name based on the component name and selected file type
                 const componentFileName = `${finalFileName}.${fileType}`;
                 const componentFilePath = path.join(componentFolderPath, componentFileName);
-                // Define the content of the component file
-                const componentContent = `import React from 'react';
-	
-	const ${componentName.charAt(0).toUpperCase() + componentName.slice(1)} = () => {
-		return (
-			<div>
-				${componentName}
-			</div>
-		);
-	}
-	
-	export default ${componentName.charAt(0).toUpperCase() + componentName.slice(1)};
-	`;
+                const snippetFilePath = "../snippets/react-component.json";
+                // Read the content of the snippet file and parse it to JSON
+                const snippets = JSON.parse(fs.readFileSync(snippetFilePath, "utf8"));
+                // Extract the snippet for the React Functional Component
+                const componentContent = snippets["React Functional Component"].body.join("\n");
                 // Create the component file with the defined content
                 fs.writeFileSync(componentFilePath, componentContent);
                 // Show a message indicating that the component was created successfully
