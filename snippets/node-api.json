@@ -1,15 +1,15 @@
-{ 
+{
     "db": {
         "prefix": "db",
         "body": [
             "const db = await open({",
-            "    filename: './{1:db name}.sqlite',",
+            "    filename: './${1:db name}.sqlite',",
             "    driver: sqlite3.Database,",
             "});",
             "",
             "try {",
             "    ${3:your code here}",
-            "    return { success: true, message: '{2:your message here}' };",
+            "    return { success: true, message: '${2:your message here}' };",
             "} catch (error) {",
             "    return { success: false, message: 'Interner Serverfehler', error: error };",
             "} finally {",
@@ -21,8 +21,8 @@
     "new action": {
         "prefix": "new action",
         "body": [
-            "} else if (body.action === '{1:your action here}') {",
-            "    const response = await {2:your response here};",
+            "} else if (body.action === '${1:your action here}') {",
+            "    const response = await ${2:your response here};",
             "    if (response.success) {",
             "        return new Response(JSON.stringify({ success: true, message: response.message }), {",
             "            headers: { 'Content-Type': 'application/json' },",
