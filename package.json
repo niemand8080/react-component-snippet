@@ -3,7 +3,7 @@
     "displayName": "React Component Snippet",
     "publisher": "niemand8080",
     "description": "Insert React component template",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "engines": {
       "vscode": "^1.50.0"
     },
@@ -12,8 +12,7 @@
     ],
     "activationEvents": [
       "onLanguage:typescriptreact",
-      "onLanguage:javascriptreact",
-      "onCommand:component-creator.createComponent"
+      "onLanguage:javascriptreact"
     ],
     "main": "./out/extension.js",
     "repository": {
