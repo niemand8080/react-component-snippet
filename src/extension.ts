@@ -98,7 +98,7 @@ export function activate(context: vscode.ExtensionContext) {
             componentFileName
           );
 
-          // Extract the snippet for the React Functional Component
+          // writes the content fot the component file
           const componentContent = `import React from 'react';
 
 const ${finalFileName}: React.FC = () => {
