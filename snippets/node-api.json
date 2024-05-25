@@ -1,0 +1,40 @@
+{ 
+    "db": {
+        "prefix": "db",
+        "body": [
+            "const db = await open({",
+            "    filename: './{1:db name}.sqlite',",
+            "    driver: sqlite3.Database,",
+            "});",
+            "",
+            "try {",
+            "    ${3:your code here}",
+            "    return { success: true, message: '{2:your message here}' };",
+            "} catch (error) {",
+            "    return { success: false, message: 'Interner Serverfehler', error: error };",
+            "} finally {",
+            "    await db.close();",
+            "}"
+        ],
+        "description": "create a db connection with try-catch-finally block"
+    },
+    "new action": {
+        "prefix": "new action",
+        "body": [
+            "} else if (body.action === '{1:your action here}') {",
+            "    const response = await {2:your response here};",
+            "    if (response.success) {",
+            "        return new Response(JSON.stringify({ success: true, message: response.message }), {",
+            "            headers: { 'Content-Type': 'application/json' },",
+            "            status: 200",
+            "        });",
+            "    } else {",
+            "        return new Response(JSON.stringify({ success: false, message: response.message }), {",
+            "            headers: { 'Content-Type': 'application/json' },",
+            "            status: 200",
+            "        });",
+            "    }"
+        ],
+        "description": "create a new action for the api"
+    }
+}
