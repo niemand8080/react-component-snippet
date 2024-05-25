@@ -1,6 +1,7 @@
 {
   "name": "react-component-snippet",
   "displayName": "React Component Snippet",
+  "publisher": "BenSeidler",
   "description": "Insert React component template",
   "version": "0.0.1",
   "engines": {
@@ -16,7 +17,7 @@
   "main": "./out/extension.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/react-component-snippet.git"
+    "url": "https://github.com/niemand8080/react-component-snippet.git"
   },
   "contributes": {
       "snippets": [
