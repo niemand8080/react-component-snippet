@@ -7,7 +7,7 @@ import * as path from "path";
 export function activate(context: vscode.ExtensionContext) {
   // Use the console to output diagnostic information (console.log) and errors (console.error)
   console.log(
-    'Congratulations, your extension "react-component-2" is now active!'
+    'Congratulations, your extension "react-component-snippet" is now active!'
   );
 
   // The command has been defined in the package.json file

@@ -3,7 +3,7 @@
     "displayName": "React Component Snippet",
     "publisher": "niemand8080",
     "description": "Insert React component template",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "engines": {
       "vscode": "^1.50.0"
     },
@@ -32,7 +32,7 @@
       ],
       "commands": [
         {
-          "command": "component-creator.createComponent",
+          "command": "react-component-snippets.createComponent",
           "title": "Create Component"
         }
       ]
