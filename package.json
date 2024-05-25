@@ -29,7 +29,13 @@
               "language": "javascriptreact",
               "path": "./snippets/react-component.json"
           }
-      ]
+      ],
+        "commands": [
+            {
+                "command": "extension.sayHello",
+                "title": "Hello World"
+            }
+        ]
   },
   "scripts": {
       "vscode:prepublish": "npm run compile",
