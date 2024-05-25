@@ -98,14 +98,18 @@ export function activate(context: vscode.ExtensionContext) {
             componentFileName
           );
 
-          const snippetFilePath = "../snippets/react-component.json";
-
-          // Read the content of the snippet file and parse it to JSON
-          const snippets = JSON.parse(fs.readFileSync(snippetFilePath, "utf8"));
-
           // Extract the snippet for the React Functional Component
-          const componentContent =
-            snippets["React Functional Component"].body.join("\n");
+          const componentContent = `import React from 'react';
+
+const ${finalFileName}: React.FC = () => {
+    return (
+        <>
+            {/* Add your ${fileType.toUpperCase()} here */}
+        </>
+    );
+};
+
+export default ${finalFileName};`;
 
           // Create the component file with the defined content
           fs.writeFileSync(componentFilePath, componentContent);
