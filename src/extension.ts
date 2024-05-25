@@ -1,28 +1,61 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import * as fs from 'fs';
+import * as path from 'path';
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+    let disposable = vscode.commands.registerCommand('component-creator.createComponent', async () => {
+        const componentName = await vscode.window.showInputBox({ prompt: 'Enter component name' });
+        if (!componentName) {
+            vscode.window.showErrorMessage('Component name is required');
+            return;
+        }
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations :D, your extension "react-component-2" is now active!');
+        const fileType = await vscode.window.showQuickPick(['tsx', 'jsx'], { placeHolder: 'Select file type' });
+        if (!fileType) {
+            vscode.window.showErrorMessage('File type is required');
+            return;
+        }
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('react-component-2.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from react-component-2!');
-	});
+        const workspaceFolders = vscode.workspace.workspaceFolders;
+        if (!workspaceFolders) {
+            vscode.window.showErrorMessage('No folder opened');
+            return;
+        }
 
-	context.subscriptions.push(disposable);
+        const rootPath = workspaceFolders[0].uri.fsPath;
+        const componentsPath = path.join(rootPath, 'components');
+        if (!fs.existsSync(componentsPath)) {
+            fs.mkdirSync(componentsPath);
+        }
+
+        const componentFolderPath = path.join(componentsPath, componentName);
+        if (!fs.existsSync(componentFolderPath)) {
+            fs.mkdirSync(componentFolderPath);
+        } else {
+            vscode.window.showErrorMessage('Folder already exists');
+            return;
+        }
+
+        const componentFileName = `${componentName.charAt(0).toUpperCase() + componentName.slice(1)}.${fileType}`;
+        const componentFilePath = path.join(componentFolderPath, componentFileName);
+        const componentContent = `import React from 'react';
+
+const ${componentName.charAt(0).toUpperCase() + componentName.slice(1)} = () => {
+    return (
+        <div>
+            ${componentName}
+        </div>
+    );
 }
 
-// This method is called when your extension is deactivated
-export function deactivate() {
-	console.log('deactivated :C');
+export default ${componentName.charAt(0).toUpperCase() + componentName.slice(1)};
+`;
+
+        fs.writeFileSync(componentFilePath, componentContent);
+        vscode.window.showInformationMessage(`Component ${componentFileName} created successfully!`);
+    });
+
+    context.subscriptions.push(disposable);
 }
+
+export function deactivate() {}
