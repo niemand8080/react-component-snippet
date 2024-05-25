@@ -24,7 +24,6 @@
             "      action: '${1:action}',",
             "    });",
             "    console.log(response.data);",
-            "   }",
             "} catch (error) {",
             "   console.error('${2:ComponentName} -> Fehler: ', error);",
             "}"
