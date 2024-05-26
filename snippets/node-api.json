@@ -23,17 +23,10 @@
         "body": [
             "} else if (body.action === '${1:your action here}') {",
             "    const response = await ${2:your response here};",
-            "    if (response.success) {",
-            "        return new Response(JSON.stringify({ success: true, message: response.message }), {",
-            "            headers: { 'Content-Type': 'application/json' },",
-            "            status: 200",
-            "        });",
-            "    } else {",
-            "        return new Response(JSON.stringify({ success: false, message: response.message }), {",
-            "            headers: { 'Content-Type': 'application/json' },",
-            "            status: 200",
-            "        });",
-            "    }"
+        "        return new Response(JSON.stringify(response), {",
+        "            headers: { 'Content-Type': 'application/json' },",
+        "            status: 200",
+        "        });"
         ],
         "description": "create a new action for the api"
     }
